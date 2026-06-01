@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.lambda-labs.unity-agent-input": {
-      "version": "https://github.com/LambdaLabsHQ/unity-agent-input.git#master",
+      "version": "https://github.com/LambdaLabsHQ/unity-agent-input.git#main",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -10,7 +10,7 @@
       "hash": "52dcf8cfb82d1ab907b32c36070a08f04a70c305"
     },
     "com.lambda-labs.unity-agent-vision": {
-      "version": "https://github.com/LambdaLabsHQ/unity-agent-vision.git#master",
+      "version": "https://github.com/LambdaLabsHQ/unity-agent-vision.git#main",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -19,11 +19,11 @@
       "hash": "6d5fd27c6801e255f9fcbabb9746d345abbf5112"
     },
     "com.lambda-labs.unity-repl": {
-      "version": "https://github.com/LambdaLabsHQ/unity-repl.git#master",
+      "version": "https://github.com/LambdaLabsHQ/unity-repl.git#main",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8af7a17d1ddb82349480ea9345d2c31f7390027d"
+      "hash": "5e0c2e0667e42e7c5d3e1a2ae1d07716043553df"
     },
     "com.unity.inputsystem": {
       "version": "1.14.2",
