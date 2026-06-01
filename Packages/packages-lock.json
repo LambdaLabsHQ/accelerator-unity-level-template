@@ -23,7 +23,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "5e0c2e0667e42e7c5d3e1a2ae1d07716043553df"
+      "hash": "8af7a17d1ddb82349480ea9345d2c31f7390027d"
     },
     "com.unity.inputsystem": {
       "version": "1.14.2",
