@@ -13,33 +13,26 @@ It includes the Unity REPL toolchain in `Packages/manifest.json`:
 
 ## Agent Setup
 
-After cloning the repo, open it in Unity and wait for package import to finish.
-Then register the Unity REPL skill from the imported package:
-
-```bash
-npx skills add ./Packages/com.lambda-labs.unity-repl
-```
-
-If that command fails because Node.js or `npx` is unavailable, use your agent
-runtime's skill installer with this skill file:
+This template is preconfigured with the Unity REPL skill installed from
+`LambdaLabsHQ/unity-repl` for both Codex and Claude Code:
 
 ```text
-./Packages/com.lambda-labs.unity-repl/.agents/skills/unity-repl/SKILL.md
+.agents/skills/unity-repl/SKILL.md
+.claude/skills/unity-repl/SKILL.md
 ```
 
-Some Unity installs resolve Git packages into `Library/PackageCache` instead of
-materializing them under `Packages`. If `./Packages/com.lambda-labs.unity-repl`
-does not exist after import, locate the package directory:
+Agent runtimes that scan those project skill directories can load Unity REPL
+directly from the template without a manual registration step.
 
-```bash
-find Library/PackageCache -maxdepth 1 -type d -name 'com.lambda-labs.unity-repl@*'
+After cloning the repo, open it in Unity and wait for package import to finish.
+The skill will resolve the REPL package from either:
+
+```text
+Packages/com.lambda-labs.unity-repl
+Library/PackageCache/com.lambda-labs.unity-repl@*
 ```
 
-Then run `npx skills add` on that package directory, or pass its
-`.agents/skills/unity-repl/SKILL.md` file to your agent runtime's skill
-installer.
-
-Verify the REPL through the skill by evaluating:
+Verify the REPL through the project skill by evaluating:
 
 ```csharp
 Application.unityVersion

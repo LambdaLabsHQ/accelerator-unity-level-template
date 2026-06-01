@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "unity-repl": {
+      "source": "LambdaLabsHQ/unity-repl",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/unity-repl/SKILL.md",
+      "computedHash": "b6b6919ac835d441ebd7b5c7068de3a1242eb763d3802c9718b0a9f1e60e971a"
+    }
+  }
+}
