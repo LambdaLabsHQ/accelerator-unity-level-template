@@ -1,7 +1,7 @@
 # Accelerator Unity Level Production Template
 
-This Unity 6000.4 template starts a game level from zero and keeps the full
-production chain inspectable from Unity:
+This Unity template starts a game level from zero and keeps the full production
+chain inspectable from Unity:
 
 `level design -> whitebox -> concept art -> image-to-3D -> placement -> audit`
 
@@ -10,6 +10,18 @@ It includes the Unity REPL toolchain in `Packages/manifest.json`:
 - `com.lambda-labs.unity-repl`
 - `com.lambda-labs.unity-agent-input`
 - `com.lambda-labs.unity-agent-vision`
+
+## Unity Version
+
+The template does not intentionally depend on a specific Unity editor version.
+Use the Unity version standardized by your project.
+
+Unity still records the editor that last saved a project in
+`ProjectSettings/ProjectVersion.txt`; if you open the project with a different
+editor, Unity may prompt to upgrade project metadata. That file is not a product
+requirement. This repository's scripts avoid Unity-version-specific gameplay APIs
+where practical and are designed around standard Editor primitives plus Unity
+REPL.
 
 ## Capability Chain
 

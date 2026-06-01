@@ -146,7 +146,7 @@ namespace AcceleratorTemplate.Editor
         {
             EnsureWhiteboxSceneLoaded();
             var targets = FindTargets();
-            var placements = UnityEngine.Object.FindObjectsByType<GeneratedAssetPlacement>(FindObjectsSortMode.None);
+            var placements = UnityEngine.Object.FindObjectsOfType<GeneratedAssetPlacement>();
             var matched = targets.Count(target => placements.Any(placement => placement.TargetId == target.TargetId));
             var missing = targets
                 .Where(target => !placements.Any(placement => placement.TargetId == target.TargetId))
@@ -220,7 +220,7 @@ namespace AcceleratorTemplate.Editor
 
         private static LevelDesignTarget[] FindTargets()
         {
-            return UnityEngine.Object.FindObjectsByType<LevelDesignTarget>(FindObjectsSortMode.None)
+            return UnityEngine.Object.FindObjectsOfType<LevelDesignTarget>()
                 .OrderBy(target => target.TargetId, StringComparer.Ordinal)
                 .ToArray();
         }
