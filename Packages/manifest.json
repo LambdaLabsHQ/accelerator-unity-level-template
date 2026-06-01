@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.lambda-labs.unity-repl": "https://github.com/LambdaLabsHQ/unity-repl.git#main",
+    "com.lambda-labs.unity-repl": "https://github.com/LambdaLabsHQ/unity-repl.git",
     "com.lambda-labs.unity-agent-input": "https://github.com/LambdaLabsHQ/unity-agent-input.git#main",
     "com.lambda-labs.unity-agent-vision": "https://github.com/LambdaLabsHQ/unity-agent-vision.git#main",
     "com.unity.inputsystem": "1.14.2",

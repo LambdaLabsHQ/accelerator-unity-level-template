@@ -19,7 +19,7 @@
       "hash": "6d5fd27c6801e255f9fcbabb9746d345abbf5112"
     },
     "com.lambda-labs.unity-repl": {
-      "version": "https://github.com/LambdaLabsHQ/unity-repl.git#main",
+      "version": "https://github.com/LambdaLabsHQ/unity-repl.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},

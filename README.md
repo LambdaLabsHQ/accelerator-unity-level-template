@@ -11,6 +11,40 @@ It includes the Unity REPL toolchain in `Packages/manifest.json`:
 - `com.lambda-labs.unity-agent-input`
 - `com.lambda-labs.unity-agent-vision`
 
+## Agent Setup
+
+After cloning the repo, open it in Unity and wait for package import to finish.
+Then register the Unity REPL skill from the imported package:
+
+```bash
+npx skills add ./Packages/com.lambda-labs.unity-repl
+```
+
+If that command fails because Node.js or `npx` is unavailable, use your agent
+runtime's skill installer with this skill file:
+
+```text
+./Packages/com.lambda-labs.unity-repl/.agents/skills/unity-repl/SKILL.md
+```
+
+Some Unity installs resolve Git packages into `Library/PackageCache` instead of
+materializing them under `Packages`. If `./Packages/com.lambda-labs.unity-repl`
+does not exist after import, locate the package directory:
+
+```bash
+find Library/PackageCache -maxdepth 1 -type d -name 'com.lambda-labs.unity-repl@*'
+```
+
+Then run `npx skills add` on that package directory, or pass its
+`.agents/skills/unity-repl/SKILL.md` file to your agent runtime's skill
+installer.
+
+Verify the REPL through the skill by evaluating:
+
+```csharp
+Application.unityVersion
+```
+
 ## Unity Version
 
 The template does not intentionally depend on a specific Unity editor version.
