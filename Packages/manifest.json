@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "com.lambda-labs.unity-repl": "https://github.com/LambdaLabsHQ/unity-repl.git#master",
-    "com.lambda-labs.unity-agent-input": "https://github.com/LambdaLabsHQ/unity-agent-input.git#master",
-    "com.lambda-labs.unity-agent-vision": "https://github.com/LambdaLabsHQ/unity-agent-vision.git#master",
+    "com.lambda-labs.unity-repl": "https://github.com/LambdaLabsHQ/unity-repl.git#main",
+    "com.lambda-labs.unity-agent-input": "https://github.com/LambdaLabsHQ/unity-agent-input.git#main",
+    "com.lambda-labs.unity-agent-vision": "https://github.com/LambdaLabsHQ/unity-agent-vision.git#main",
     "com.unity.inputsystem": "1.14.2",
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.modules.accessibility": "1.0.0",
