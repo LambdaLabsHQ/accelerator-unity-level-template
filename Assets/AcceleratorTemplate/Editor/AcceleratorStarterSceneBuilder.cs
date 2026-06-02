@@ -7,12 +7,12 @@ namespace AcceleratorTemplate.Editor
         [MenuItem("Accelerator/Create Starter Scene")]
         public static string CreateStarterScene()
         {
-            return AcceleratorLevelProductionTemplate.GenerateSeedWhitebox();
+            return AcceleratorLevelProductionTemplate.CreateFreshProductionScene();
         }
 
         public static string SmokeCheck()
         {
-            return AcceleratorLevelProductionTemplate.AuditWhitebox();
+            return AcceleratorLevelProductionTemplate.AuditActiveScene();
         }
 
         public static string EnterPlayMode()
@@ -22,7 +22,7 @@ namespace AcceleratorTemplate.Editor
 
         public static string PlayModeSmokeCheck()
         {
-            return AcceleratorLevelProductionTemplate.AuditPlacements();
+            return AcceleratorLevelProductionTemplate.AuditActiveScene();
         }
 
         public static string ExitPlayMode()

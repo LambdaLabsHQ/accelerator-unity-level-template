@@ -1,1 +1,0 @@
-AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.ApplyGeneratedAssetPlaceholders()

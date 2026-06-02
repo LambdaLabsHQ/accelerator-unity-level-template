@@ -1,1 +1,1 @@
-AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.GenerateSeedWhitebox()
+AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.CreateFreshProductionScene()

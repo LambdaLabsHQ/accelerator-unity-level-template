@@ -9,7 +9,7 @@ namespace AcceleratorTemplate.Runtime
         [SerializeField] private string sourcePart = "";
         [SerializeField] private string conceptArtifactSlot = "";
         [SerializeField] private string meshArtifactSlot = "";
-        [SerializeField] private string placementStatus = "placeholder";
+        [SerializeField] private string placementStatus = "generated";
 
         public string TargetId => targetId;
         public string SourcePart => sourcePart;

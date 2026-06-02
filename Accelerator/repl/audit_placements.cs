@@ -1,1 +1,1 @@
-AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.AuditPlacements()
+AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.AuditActiveScene()

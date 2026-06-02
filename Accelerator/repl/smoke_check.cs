@@ -1,1 +1,1 @@
-AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.AuditWhitebox()
+AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.AuditActiveScene()

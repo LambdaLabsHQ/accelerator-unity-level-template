@@ -3,7 +3,13 @@
 This Unity template starts a game level from zero and keeps the full production
 chain inspectable from Unity:
 
-`level design -> whitebox -> concept art -> image-to-3D -> placement -> audit`
+`level design -> whitebox -> concept art -> exploded assets -> 3D/CSG -> placement -> audit`
+
+The repository is intentionally an empty production template. It must not carry
+prebuilt scenes, prefabs, meshes, materials, textures, concept images, CSG
+proxies, 3D proxies, or previous-run outputs. Every Game Jam run should create a
+fresh run/output directory, a fresh Unity scene, and newly generated assets from
+the capability chain.
 
 It includes the Unity REPL toolchain in `Packages/manifest.json`:
 
@@ -52,53 +58,52 @@ REPL.
 
 ## Capability Chain
 
-The template exports a graph using Accelerator capability IDs:
+Agents should build the production graph using Accelerator capability IDs:
 
 - `gp-level-plan`: create the level plan from a gameplay brief.
 - `gp-level-layout`: turn the plan into a spatial floor layout.
-- `gp-whitebox`: create a Unity whitebox scene and source whitebox screenshot.
-- `2d-prop-ref`: generate concept reference images for each whitebox target.
-- `art-image-to-3d`: generate raw GLB meshes from concept images.
+- `gp-whitebox`: use Unity REPL agentically to create a Unity whitebox scene,
+  source screenshot, and whitebox manifest from the layout.
+- `art-beautify`: turn the whitebox screenshot into concept art.
+- `art-scene-plan`: extract scene semantics and placement constraints.
+- `art-explode`: turn the concept image into an exploded asset sheet.
+- `art-cut`: cut part crops from the exploded image.
+- `art-pack`: pack part crops into atlas images.
+- `art-enhance`: enhance pack images for 3D reconstruction.
+- `art-image-to-csg-proxy` or `art-image-to-3d`: generate the CSG proxy or mesh
+  from this run's generated images. Do not use preset CSG or 3D proxy assets.
 - `art-normalize`: normalize meshes for Unity placement.
 - `unity-repl`: apply generated assets to the Unity scene and audit coverage.
 
 ## REPL Commands
 
-Open the project in Unity, then export the from-zero production graph:
+Open the project in Unity, then create a fresh empty production scene if the
+agent needs a scene container before running `gp-whitebox`:
 
 ```bash
 cargo run -p accelerator-cli -- node run unity-repl \
-  --output-dir runs/unity-template-graph \
-  --input 'csharp_code=AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.ExportFromZeroProductionGraph()' \
+  --output-dir runs/unity-template-fresh-scene \
+  --input 'csharp_code=AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.CreateFreshProductionScene()' \
   --option project_root=/path/to/accelerator-unity-level-template
 ```
 
-Create the template whitebox scene from the default seed brief:
+Audit the currently open scene after the capability chain has produced and
+placed generated assets:
 
 ```bash
 cargo run -p accelerator-cli -- node run unity-repl \
-  --output-dir runs/unity-template-whitebox \
-  --input 'csharp_code=AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.GenerateSeedWhitebox()' \
-  --option project_root=/path/to/accelerator-unity-level-template
-```
-
-Apply generated placeholders and audit placement coverage:
-
-```bash
-cargo run -p accelerator-cli -- node run unity-repl \
-  --output-dir runs/unity-template-placeholders \
-  --input 'csharp_code=AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.ApplyGeneratedAssetPlaceholders()' \
+  --output-dir runs/unity-template-audit \
+  --input 'csharp_code=AcceleratorTemplate.Editor.AcceleratorLevelProductionTemplate.AuditActiveScene()' \
   --option project_root=/path/to/accelerator-unity-level-template
 ```
 
 ```text
-Accelerator > Level Production > Export From-Zero Graph
-Accelerator > Level Production > Generate Seed Whitebox
-Accelerator > Level Production > Apply Generated Placeholders
-Accelerator > Level Production > Audit Placements
+Accelerator > Level Production > Create Fresh Production Scene
+Accelerator > Level Production > Audit Active Scene
 ```
 
-`GenerateSeedWhitebox()` is a local deterministic stand-in for the first
-`gp-whitebox` run. Production usage should call the exported graph's level design
-and whitebox capabilities, then use `unity-repl` to apply the generated manifest
-or place provider-generated meshes into the same target slots.
+The template utilities only create empty containers and audit the active scene.
+They do not generate seed targets, preset whitebox geometry, placeholder art, CSG
+proxies, or meshes. Production usage should run the level, whitebox, art, 3D,
+normalization, and Unity placement capabilities for each Game Jam topic from
+zero.
