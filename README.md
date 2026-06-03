@@ -3,7 +3,7 @@
 This Unity template starts a game level from zero and keeps the full production
 chain inspectable from Unity:
 
-`level design -> whitebox -> concept art -> exploded assets -> 3D/CSG -> placement -> audit`
+`producer -> level design -> whitebox -> concept art -> exploded assets -> per-target Tripo/CSG -> placement -> lighting -> audit`
 
 The repository is intentionally an empty production template. It must not carry
 prebuilt scenes, prefabs, meshes, materials, textures, concept images, CSG
@@ -60,20 +60,40 @@ REPL.
 
 Agents should build the production graph using Accelerator capability IDs:
 
+- `prod-creative-design`: ask the user for the Game Jam theme, mechanic, or
+  emotional target, then converge candidate directions. Do not invent the topic
+  without user confirmation.
+- `prod-one-pager`: lock the selected direction into a production one-pager.
+- `prod-stage-plan`: scope the first playable level for the available time and
+  team size.
 - `gp-level-plan`: create the level plan from a gameplay brief.
 - `gp-level-layout`: turn the plan into a spatial floor layout.
 - `gp-whitebox`: use Unity REPL agentically to create a Unity whitebox scene,
   source screenshot, and whitebox manifest from the layout.
-- `art-beautify`: turn the whitebox screenshot into concept art.
+- `art-beautify`: turn the whitebox screenshot into structure-preserving
+  concept art. The main route, entrance, platforms, walls, gates, trigger
+  points, and proportions should stay aligned to the whitebox.
 - `art-scene-plan`: extract scene semantics and placement constraints.
 - `art-explode`: turn the concept image into an exploded asset sheet.
 - `art-cut`: cut part crops from the exploded image.
 - `art-pack`: pack part crops into atlas images.
-- `art-enhance`: enhance pack images for 3D reconstruction.
-- `art-image-to-csg-proxy` or `art-image-to-3d`: generate the CSG proxy or mesh
-  from this run's generated images. Do not use preset CSG or 3D proxy assets.
-- `art-normalize`: normalize meshes for Unity placement.
-- `unity-repl`: apply generated assets to the Unity scene and audit coverage.
+- `art-enhance`: enhance selected parts or packs for 3D reconstruction.
+- `backend_selection`: write an explicit asset coverage plan for every major
+  whitebox target. Choose Tripo or CSG per target based on required visual
+  clarity, silhouette complexity, material or texture value, cost, and QA risk.
+  Do not use all-Tripo or all-CSG for the whole scene by default.
+- `art-image-to-3d`: use Tripo for targets that need high visual clarity,
+  complex silhouettes, or useful texture reconstruction.
+- `art-image-to-csg-proxy`: use CSG for deterministic low-poly structure,
+  simple architecture, platforms, furniture, markers, and geometric props.
+- `art-orient`: orient every Tripo raw GLB before normalize/convert.
+- `art-normalize`: normalize every generated mesh for Unity placement.
+- `art-convert`: export normalized GLB assets to Unity-importable FBX.
+- `unity-repl`: import and place generated assets against whitebox targets,
+  hide or replace whitebox renderers, and write a placement audit.
+- `scene-lighting-beautify`: run after placement as a separate node. Adjust
+  Unity lighting, AO/contact shadows, exposure, fog/background, camera, and
+  performance settings against the concept reference.
 
 ## REPL Commands
 
@@ -104,6 +124,7 @@ Accelerator > Level Production > Audit Active Scene
 
 The template utilities only create empty containers and audit the active scene.
 They do not generate seed targets, preset whitebox geometry, placeholder art, CSG
-proxies, or meshes. Production usage should run the level, whitebox, art, 3D,
-normalization, and Unity placement capabilities for each Game Jam topic from
+proxies, Tripo outputs, or meshes. Production usage should run the producer,
+level, whitebox, art, per-target 3D backend selection, normalization, conversion,
+Unity placement, lighting, and audit capabilities for each Game Jam topic from
 zero.
